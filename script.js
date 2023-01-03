@@ -1,9 +1,9 @@
-const main = document.getElementById('main');
-const addUserBtn = document.getElementById('add-user');
-const doubleBtn = document.getElementById('double');
-const showMillionairesBtn = document.getElementById('show-millionaires');
-const sortBtn = document.getElementById('sort');
-const calculateWealthBtn = document.getElementById('calculate-wealth');
+const main = document.getElementById("main");
+const addUserBtn = document.getElementById("add-user");
+const doubleBtn = document.getElementById("double");
+const showMillionairesBtn = document.getElementById("show-millionaires");
+const sortBtn = document.getElementById("sort");
+const calculateWealthBtn = document.getElementById("calculate-wealth");
 
 // Initializing this array of objects that is going to pull all the people
 let data = [];
@@ -14,22 +14,31 @@ getRandomUser();
 
 // Fetch random user and add money
 async function getRandomUser() {
-    const res = await fetch('https://randomuser.me/api');
-    const data = await res.json();
-    
-    const user = data.results[0];
+  const res = await fetch("https://randomuser.me/api");
+  const data = await res.json();
 
-    const newUser = {
-        name: `${user.name.first} ${user.name.last}`,
-        money: Math.floor(Math.random() * 1000000)
-    };
+  const user = data.results[0];
 
-    addData(newUser)
+  const newUser = {
+    name: `${user.name.first} ${user.name.last}`,
+    money: Math.floor(Math.random() * 1000000),
+  };
 
+  addData(newUser);
 }
 
 // Add new obj to data arr
 
 function addData(obj) {
-    data.push(obj);
+  data.push(obj);
+
+  updateDOM();
+}
+
+// Update DOM
+
+function updateDOM(providedData = data) {
+  // Clear main div
+
+  main.innerHTML = "<h2><strong>Person</strong> Wealth</h2>";
 }
