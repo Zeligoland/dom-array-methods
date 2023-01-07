@@ -41,4 +41,13 @@ function updateDOM(providedData = data) {
   // Clear main div
 
   main.innerHTML = "<h2><strong>Person</strong> Wealth</h2>";
+
+  providedData.forEach(item => {
+    // Creating a brand new element for each of the people
+    const element = document.createElement('div');
+    element.classList.add('person');
+    element.innerHTML = `<strong>${item.name}</strong> ${item.money}`;
+    main.appendChild(element);
+
+  });
 }
