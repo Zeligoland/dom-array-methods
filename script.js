@@ -42,12 +42,23 @@ function updateDOM(providedData = data) {
 
   main.innerHTML = "<h2><strong>Person</strong> Wealth</h2>";
 
-  providedData.forEach(item => {
+  providedData.forEach((item) => {
     // Creating a brand new element for each of the people
-    const element = document.createElement('div');
-    element.classList.add('person');
-    element.innerHTML = `<strong>${item.name}</strong> ${item.money}`;
+    const element = document.createElement("div");
+    element.classList.add("person");
+    element.innerHTML = `<strong>${item.name}</strong> ${formatMoney(
+      item.money
+    )}`;
     main.appendChild(element);
-
   });
 }
+
+// Format number as money
+
+function formatMoney(number) {
+  return "$" + number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+}
+
+// Function to addUser button - Event Listeners
+
+addUserBtn.addEventListener("click", getRandomUser);
