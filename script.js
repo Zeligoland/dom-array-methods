@@ -37,10 +37,18 @@ function doubleMoney() {
   updateDOM();
 }
 
-// Sorts user by richest
-
+// Sort users by richest
 function sortByRichest() {
   data.sort((a, b) => b.money - a.money);
+
+  updateDOM();
+}
+
+// Filter only millionaires
+function showMillionaires() {
+  data = data.filter((user) => {
+    return user.money > 1000000;
+  });
 
   updateDOM();
 }
@@ -82,3 +90,4 @@ function formatMoney(number) {
 addUserBtn.addEventListener("click", getRandomUser);
 doubleBtn.addEventListener("click", doubleMoney);
 sortBtn.addEventListener("click", sortByRichest);
+showMillionairesBtn.addEventListener("click", showMillionaires);
